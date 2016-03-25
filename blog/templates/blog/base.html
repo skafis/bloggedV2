@@ -1,0 +1,26 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Techies  Blog</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.0/foundation.min.css" type=text/css >
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.0/foundation.min.js" type=text/css >
+        <link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    </head>
+    <body>
+        <body>
+            <div class="page-header">
+                <h1><a href="/">Django Girls Blog</a></h1>
+            </div>
+            <div class="content container">
+                <div class="row">
+                    <div class="small-7 large-8 column">
+                    {% block content %}
+                    {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </body>
+    </body>
+</html>
+

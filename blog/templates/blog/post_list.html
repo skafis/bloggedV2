@@ -1,32 +1,13 @@
-{% load staticfiles %}
-<html>
-    <head>
-        <title>Techies  Blog</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.0/foundation.min.css" type=text/css >
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.0/foundation.min.js" type=text/css >
-        <link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-    </head>
-    <body>
-        <div class="page-header">
-            <h1><a href="/">Techies Blog</a></h1>
-        </div>
+{% extends 'blog/base.html' %}
 
-        <div class="content container">
-            <div class="row">
-                <div class="col-md-8">
-                    {% for post in posts %}
-                        <div class="post">
-                            <div class="date">
-                                <p>published: {{ post.published_date }}</p>
-                            </div>
-                            <h1><a href="">{{ post.title }}</a></h1>
-                            <p>{{ post.text|linebreaks }}</p>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
+{% block content %}
+    {% for post in posts %}
+    <div class="post">
+        <div class="date">
+            <p>published: {{ post.published_date }}</p>
         </div>
-    </body>
-</html>
-   
+        <h1><a href="">{{ post.title }}</a></h1>
+        <p>{{ post.text|linebreaks }}</p>
+    </div>
+    {% endfor %}
+{% endblock %}
