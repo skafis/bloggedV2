@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.utils import timezone
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render_to_response, redirect
 from .models import Post
 from django.shortcuts import render, get_object_or_404
@@ -9,7 +10,19 @@ from django.core.urlresolvers import reverse
 
 # Create your views here.
 def post_list(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+    posts_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+    paginator = Paginator(posts_list, 3)  # Show 25 contacts per page
+
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        posts = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        posts = paginator.page(paginator.num_pages)
+
     return render (request, 'blog/post_list.html',{'posts':posts})
 
 def post_detail (request, pk):
@@ -24,8 +37,10 @@ def post_new(request):
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
+            # message.success(reqest, "successfuly created")
             return redirect('post_list',)
     else:
+        # message.error(request, "error not created")
         form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
 
