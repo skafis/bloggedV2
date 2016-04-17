@@ -15,7 +15,7 @@
         <body>
             <div class="page-header">
                 {% if user.is_authenticated %}
-
+                    <a href="{% url 'post_new' %}" class="top-menu"><span class="fi-plus"></span></a>
                 {% endif %}
                 
                 <h1><a href="/">TECHIES BLOG</a></h1>
