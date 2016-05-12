@@ -28,20 +28,23 @@
             <div class="off-canvas-wrapper">
           <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
             <div class="off-canvas position-left" id="offCanvas" data-off-canvas>
+            <div class="about">
+                
+            </div>
                 {% for post in posts %}
                 <p><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></p>
                 {% endfor %}
               </div>
             <div class="off-canvas-content" data-off-canvas-content>
             <div class="header">
-            <h1>Franis Kipchumba</h1>
+            <h1><a href="{% url 'post_list' %}"> FRANCIS KIPCHUMBA </h1>
             <h2>Techies Blog</h2>
                 
             
                 
                 <img class="menu" src="{% static 'image/menu.ico' %}" data-toggle="offCanvas" >
                 </div>
-                some shit in here
+                <!-- some shit in here -->
                 {% block details %}
                 {% endblock %}
 
