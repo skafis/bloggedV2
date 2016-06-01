@@ -1,156 +1,141 @@
 {% load staticfiles %}
 <!doctype html>
 <html class="no-js" lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Techies Blog</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Techies Blog</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.1/foundation.min.css"> -->
-        <link rel="stylesheet" href="{% static 'css/foundation.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/normalize.min.css' %}">
-        <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-<<<<<<< HEAD
-<!-- {#        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">#} -->
-<!-- {#        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">#} -->
-<!-- {#        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>#} -->
-<!-- {#        <link rel="stylesheet" href="{% static 'css/blog.css' %}">#} -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.1/foundation.min.css">
+    <link rel="stylesheet" href="{% static 'css/normalize.min.css' %}">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+</head>
+
+<body>
     </head>
-        <body>
-            <div class="page-header">
-                {% if user.is_authenticated %}
-                    <a href="{% url 'post_new' %}" class="top-menu"><span class="fi-plus"></span></a>
-                {% endif %}
-                
-                <h1><a href="/">TECHIES BLOG</a></h1>
-            </div>
-            <div class="row content container">
-                <div class="extendedrow">
-                    <div class="small-12 large-10 colum">
-                    {% block content %}
-                    {% endblock %}
+
+    <body>
+        {% block details %} {% endblock %}
+        <!-- Sidebar -->
+        <div id="sidebar">
+
+            <!-- Logo -->
+            <h1 id="logo"><a href="{% url 'post_list' %}">Techies Blog</a>
+            {% if user.is_authenticated %}
+            <a href="{% url 'post_new' %}" class="top-menu"><span class="fi-plus"></span></a>
+        {% endif %}
+            </h1>
+
+
+    
+
+            <!-- Nav -->
+            <nav id="nav">
+                <ul>
+                    <li class="current"><a href="{% url 'post_list' %}">Latest Post</a></li>
+                    <li><a href="#">Archives</a></li>
+                    <li><a href="#">About Me</a></li>
+                    <li><a href="#">Contact Me</a></li>
+                </ul>
+            </nav>
+
+            <!-- Search -->
+            <section class="box search">
+                <form method="post" action="#">
+                    <input type="text" class="text" name="search" placeholder="Search" />
+                </form>
+            </section>
+
+            <!-- Recent Posts -->
+            <section class="box recent-posts">
+                <header>
+                    <h2>Recent Posts</h2>
+                </header>
+                <ul>
+                {% for post in posts %}
+                    <li><a href="{% url 'post_detail' pk=post.pk %}">{{post.title}}</a></li>
+                {% endfor %}
+                </ul>
+            </section>
+
+            <!-- Recent Comments -->
+            <section class="box recent-comments">
+                <header>
+                    <h2>Recent Comments</h2>
+                </header>
+                <ul>
+                    <li>case on <a href="#">Lorem ipsum dolor</a></li>
+                    <li>molly on <a href="#">Sed dolore magna</a></li>
+                    <li>case on <a href="#">Sed dolore magna</a></li>
+                </ul>
+            </section>
+
+            <!-- Calendar -->
+            <section class="box calendar">
+                <div class="inner">
+                    <table>
+                        <caption>July 2014</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col" title="Monday">M</th>
+                                <th scope="col" title="Tuesday">T</th>
+                                <th scope="col" title="Wednesday">W</th>
+                                <th scope="col" title="Thursday">T</th>
+                                <th scope="col" title="Friday">F</th>
+                                <th scope="col" title="Saturday">S</th>
+                                <th scope="col" title="Sunday">S</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="4" class="pad"><span>&nbsp;</span></td>
+                                <td><span>1</span></td>
+                                <td><span>2</span></td>
+                                <td><span>3</span></td>
+                            </tr>
+                            <tr>
+                                <td><span>4</span></td>
+                                <td><span>5</span></td>
+                                <td><a href="#">6</a></td>
+                                <td><span>7</span></td>
+                                <td><span>8</span></td>
+                                <td><span>9</span></td>
+                                <td><a href="#">10</a></td>
+                            </tr>
+                            <tr>
+                                <td><span>11</span></td>
+                                <td><span>12</span></td>
+                                <td><span>13</span></td>
+                                <td class="today"><a href="#">14</a></td>
+                                <td><span>15</span></td>
+                                <td><span>16</span></td>
+                                <td><span>17</span></td>
+                            </tr>
+                            <tr>
+                                <td><span>18</span></td>
+                                <td><span>19</span></td>
+                                <td><span>20</span></td>
+                                <td><span>21</span></td>
+                                <td><span>22</span></td>
+                                <td><a href="#">23</a></td>
+                                <td><span>24</span></td>
+                            </tr>
+                            <tr>
+                                <td><a href="#">25</a></td>
+                                <td><span>26</span></td>
+                                <td><span>27</span></td>
+                                <td><span>28</span></td>
+                                <td class="pad" colspan="3"><span>&nbsp;</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-=======
-        
-    </head>
-        <body>
-        {% block details %}
-                {% endblock %}
-            <!-- Sidebar -->
-            <div id="sidebar">
-
-                <!-- Logo -->
-                    <h1 id="logo"><a href="#">Techies Blog</a></h1>
-
-                <!-- Nav -->
-                    <nav id="nav">
-                        <ul>
-                            <li class="current"><a href="#">Latest Post</a></li>
-                            <li><a href="#">Archives</a></li>
-                            <li><a href="#">About Me</a></li>
-                            <li><a href="#">Contact Me</a></li>
-                        </ul>
-                    </nav>
-
-                <!-- Search -->
-                    <section class="box search">
-                        <form method="post" action="#">
-                            <input type="text" class="text" name="search" placeholder="Search" />
-                        </form>
-                    </section>
-
-                <!-- Recent Posts -->
-                    <section class="box recent-posts">
-                        <header>
-                            <h2>Recent Posts</h2>
-                        </header>
-                        <ul>
-                            <li><a href="#">Lorem ipsum dolor</a></li>
-                            <li><a href="#">Feugiat nisl aliquam</a></li>
-                            <li><a href="#">Sed dolore magna</a></li>
-                            <li><a href="#">Malesuada commodo</a></li>
-                            <li><a href="#">Ipsum metus nullam</a></li>
-                        </ul>
-                    </section>
-
-                <!-- Recent Comments -->
-                    <section class="box recent-comments">
-                        <header>
-                            <h2>Recent Comments</h2>
-                        </header>
-                        <ul>
-                            <li>case on <a href="#">Lorem ipsum dolor</a></li>
-                            <li>molly on <a href="#">Sed dolore magna</a></li>
-                            <li>case on <a href="#">Sed dolore magna</a></li>
-                        </ul>
-                    </section>
-
-                <!-- Calendar -->
-                    <section class="box calendar">
-                        <div class="inner">
-                            <table>
-                                <caption>July 2014</caption>
-                                <thead>
-                                    <tr>
-                                        <th scope="col" title="Monday">M</th>
-                                        <th scope="col" title="Tuesday">T</th>
-                                        <th scope="col" title="Wednesday">W</th>
-                                        <th scope="col" title="Thursday">T</th>
-                                        <th scope="col" title="Friday">F</th>
-                                        <th scope="col" title="Saturday">S</th>
-                                        <th scope="col" title="Sunday">S</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td colspan="4" class="pad"><span>&nbsp;</span></td>
-                                        <td><span>1</span></td>
-                                        <td><span>2</span></td>
-                                        <td><span>3</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><span>4</span></td>
-                                        <td><span>5</span></td>
-                                        <td><a href="#">6</a></td>
-                                        <td><span>7</span></td>
-                                        <td><span>8</span></td>
-                                        <td><span>9</span></td>
-                                        <td><a href="#">10</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><span>11</span></td>
-                                        <td><span>12</span></td>
-                                        <td><span>13</span></td>
-                                        <td class="today"><a href="#">14</a></td>
-                                        <td><span>15</span></td>
-                                        <td><span>16</span></td>
-                                        <td><span>17</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><span>18</span></td>
-                                        <td><span>19</span></td>
-                                        <td><span>20</span></td>
-                                        <td><span>21</span></td>
-                                        <td><span>22</span></td>
-                                        <td><a href="#">23</a></td>
-                                        <td><span>24</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#">25</a></td>
-                                        <td><span>26</span></td>
-                                        <td><span>27</span></td>
-                                        <td><span>28</span></td>
-                                        <td class="pad" colspan="3"><span>&nbsp;</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </section>
->>>>>>> production
-            </div>
+            </section>
+        </div>
         <script src="{% static 'js/jquery.min.js' %}"></script>
         <script src="{% static 'js/skel.min.js' %}"></script>
         <script src="{% static 'js/util.js' %}"></script>
@@ -158,9 +143,13 @@
         <!-- <script src="{% static 'js/foundation.min.js' %}"></script> -->
         <script src="{% static 'js/app.js' %}"></script>
         <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-        <script>$(document).foundation();</script>
-        
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-        </body>
-</html>
+        <script>
+            $(document).foundation();
+        </script>
 
+        <script>
+            window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')
+        </script>
+    </body>
+
+</html>
