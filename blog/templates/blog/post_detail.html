@@ -29,6 +29,9 @@
                                 -->
                                 <h2>{{ post.title }}</h2>
                             </header>
+                            {% if user.is_authenticated %}
+        <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="fi-pencil"></span></a>
+        {% endif %}
                             <div class="info">
                                 <!--
                                     Note: The date should be formatted exactly as it's shown below. In particular, the
@@ -38,6 +41,7 @@
                                     the entire "date" element.
 
                                 -->
+
                                 <span class="date"><span class="month">Jul<span>y</span></span> <span class="day">14</span><span class="year">, 2014</span></span>
                                 <!--
                                     Note: You can change the number of list items in "stats" to whatever you want.
@@ -51,6 +55,11 @@
                                 </ul>
 
                             </div>
+                            {% if post.published_date %}
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+        {% endif %}
                             <p>{{ post.text|linebreaks }}</p>
                         </article>
                 </div>
