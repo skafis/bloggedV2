@@ -22,7 +22,7 @@ def post_list(request):
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
         posts = paginator.page(paginator.num_pages)
-        
+
     context = {
         'posts':posts_list,
         'paginator':paginator,
@@ -31,8 +31,13 @@ def post_list(request):
     return render (request, 'blog/post_list.html',context)
 
 def post_detail (request, pk):
+    posts_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'blog/post_detail.html', {'post': post})
+    context = {
+        'post': post,
+        'posts': posts_list,
+    }
+    return render(request, 'blog/post_detail.html', context)
 
 def post_new(request):
     if request.method == "POST":
