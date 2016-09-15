@@ -56,6 +56,7 @@
                     <h2>Recent Posts</h2>
                 </header>
                 <ul>
+
                 {% for post in posts %}
                     <li><a href="{% url 'post_detail' pk=post.pk %}">{{post.title}}</a></li>
                 {% endfor %}
@@ -78,7 +79,7 @@
             <section class="box calendar">
                 <div class="inner">
                     <table>
-                        <caption>July 2014</caption>
+                        <caption>September 2016</caption>
                         <thead>
                             <tr>
                                 <th scope="col" title="Monday">M</th>
