@@ -57,7 +57,7 @@
                 </header>
                 <ul>
 
-                {% for post in posts %}
+                {% for post in post_list %}
                     <li><a href="{% url 'post_detail' pk=post.pk %}">{{post.title}}</a></li>
                 {% endfor %}
                 </ul>

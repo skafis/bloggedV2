@@ -24,7 +24,7 @@ def post_list(request):
         queryset = paginator.page(paginator.num_pages)
 
     context = {
-        # 'posts':posts_list,
+        'post_list':posts_list,
         'posts':queryset, 
         "page_request_var": page_request_var,
     }
