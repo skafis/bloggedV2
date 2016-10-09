@@ -10,6 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.1/foundation.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.print.css">
     <link rel="stylesheet" href="{% static 'css/normalize.min.css' %}">
     <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
@@ -76,6 +78,7 @@
             </section>
 
             <!-- Calendar -->
+            <div id='calendar'></div>
             <section class="box calendar">
                 <div class="inner">
                     <table>
@@ -141,11 +144,23 @@
         <script src="{% static 'js/skel.min.js' %}"></script>
         <script src="{% static 'js/util.js' %}"></script>
         <script src="https://cdn.jsdelivr.net/foundation/6.2.1/foundation.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.js"></script>
         <!-- <script src="{% static 'js/foundation.min.js' %}"></script> -->
         <script src="{% static 'js/app.js' %}"></script>
         <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
         <script>
             $(document).foundation();
+        </script>
+        <script>
+        $(document).ready(function() {
+
+            // page is now ready, initialize the calendar...
+
+            $('#calendar').fullCalendar({
+                // put your options and callbacks here
+            })
+
+        });
         </script>
 
         <script>

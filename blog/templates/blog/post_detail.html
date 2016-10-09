@@ -22,8 +22,7 @@
             </div>
             {% if post.published_date %}
             <div class="date">
-                <strong>{{ post.published_date | date }}</strong></br>
-                <!-- <strong>{{ post.published_date | date:"M"}}</strong> -->
+                <strong>{{ post.published_date | date }}</strong>
             </div>
             {% endif %}
             <p>{{ post.text|linebreaks }}</p>
