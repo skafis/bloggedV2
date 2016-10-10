@@ -10,7 +10,7 @@ from django.core.urlresolvers import reverse
 
 # Create your views here.
 def post_list(request):
-    posts_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+    posts_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')[:5]
     paginator = Paginator(posts_list, 4)  # Show 25 contacts per page
     page_request_var = "page"
     page = request.GET.get(page_request_var)
