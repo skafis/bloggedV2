@@ -15,13 +15,14 @@
     <link rel="stylesheet" href="{% static 'css/normalize.min.css' %}">
     <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    {% block head_extra %} {% endblock head_extra%}
 </head>
 
 <body>
-    </head>
 
     <body>
         {% block details %} {% endblock %}
+        
         <!-- Sidebar -->
         <div id="sidebar">
 

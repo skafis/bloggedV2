@@ -1,4 +1,10 @@
-{% extends 'blog/base.html' %} {% block details %}
+{% extends 'blog/base.html' %} 
+
+{% block head_extra %}
+{{ form.media }}
+{% endblock head_extra%}
+
+{% block details %}
 <!-- Content -->
 <div id="content">
     <div class="inner">
