@@ -10,8 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.1/foundation.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.print.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.print.css"> -->
     <link rel="stylesheet" href="{% static 'css/normalize.min.css' %}">
     <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
@@ -31,10 +31,6 @@
             <a href="{% url 'post_new' %}" class="top-menu"><span class="fi-plus"></span></a>
         {% endif %}
             </h1>
-
-
-    
-
             <!-- Nav -->
             <nav id="nav">
                 <ul>
@@ -140,18 +136,22 @@
                 </div>
             </section>
         </div>
-        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <!-- <script src="{% static 'js/jquery.min.js' %}"></script> -->
         <script src="{% static 'js/skel.min.js' %}"></script>
         <script src="{% static 'js/util.js' %}"></script>
-        <script src="https://cdn.jsdelivr.net/foundation/6.2.1/foundation.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.js"></script>
+        <script
+              src="https://code.jquery.com/jquery-1.12.4.min.js"
+              integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+              crossorigin="anonymous"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/foundation/6.2.1/foundation.min.js"></script> -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.js"></script> -->
         <!-- <script src="{% static 'js/foundation.min.js' %}"></script> -->
         <script src="{% static 'js/app.js' %}"></script>
         <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
         <script>
             $(document).foundation();
         </script>
-        <script>
+       <!--  <script>
         $(document).ready(function() {
 
             // page is now ready, initialize the calendar...
@@ -162,9 +162,21 @@
 
         });
         </script>
-
-        <script>
+ -->
+        <!-- <script>
             window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')
+        </script> -->
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js'></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $(".content-markdown").each(function(){
+                    var content = $(this).text()
+                    console.log(content)
+                    var markedContent = marked(content)
+                    console.log(markedContent)
+                    $(this).html(markedContent)
+                });
+            })
         </script>
     </body>
 

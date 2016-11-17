@@ -14,7 +14,7 @@
             <span class="date"><span class="month">{{post.published_date | date:"M"}}<span>y</span></span> <span class="day">{{post.published_date | date:"d"}}</span><span class="year">, 2014</span></span>
 
             </div>
-            <p>{{ post.text|linebreaks | truncatechars:500 }}<a href="{% url 'post_detail' pk=post.pk %}">Read more</a>
+            <p class="content-markdown">{{ post.text | truncatechars:500 }}<a href="{% url 'post_detail' pk=post.pk %}">Read more</a>
             </p>
         </article>
         <hr>
