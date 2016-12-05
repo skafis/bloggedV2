@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.utils.text import slugify
 from django.db.models.signals import pre_save
+from django.core.urlresolvers import reverse
 
 # Create your models here.
 
@@ -19,6 +20,9 @@ class Post(models.Model):
 
 	def __str__(self):
 		return self.title
+
+	def get_absolute_url(self):
+		return reverse("post_detail", kwargs={"slug":self.slug})
 
 def create_slug(instance, new_slug = None):
 	slug = slugify(instance.title)
