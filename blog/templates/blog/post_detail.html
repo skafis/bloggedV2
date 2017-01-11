@@ -23,7 +23,7 @@
             </div>
             {% if post.published_date %}
             <div class="date">
-                <strong>{{ post.published_date | date }}</strong>
+                <strong> last modified on ~ {{ post.published_date | date }}</strong>
             </div>
             {% endif %}
             <div class="content-markdown">{{ post.text}}</div>
