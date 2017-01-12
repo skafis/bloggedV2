@@ -57,13 +57,13 @@
                 <ul>
 
                 {% for post in post_list %}
-                    <li><a href="{% url 'post_detail' pk=post.pk %}">{{post.title}}</a></li>
+                    <li><a href="{% url 'post_detail' slug=post.slug %}">{{post.title}}</a></li>
                 {% endfor %}
                 </ul>
             </section>
 
             <!-- Recent Comments -->
-            <section class="box recent-comments">
+            <!-- <section class="box recent-comments">
                 <header>
                     <h2>Recent Comments</h2>
                 </header>
@@ -72,14 +72,14 @@
                     <li>molly on <a href="#">Sed dolore magna</a></li>
                     <li>case on <a href="#">Sed dolore magna</a></li>
                 </ul>
-            </section>
+            </section> -->
 
             <!-- Calendar -->
             <div id='calendar'></div>
             <section class="box calendar">
                 <div class="inner">
                     <table>
-                        <caption>September 2016</caption>
+                        <caption>January 2017</caption>
                         <thead>
                             <tr>
                                 <th scope="col" title="Monday">M</th>

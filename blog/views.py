@@ -31,12 +31,13 @@ def post_list(request):
 
     return render (request, 'blog/post_list.html',context)
 
-def post_detail (request, pk):
-    posts_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-    post = get_object_or_404(Post, pk=pk)
+def post_detail (request, slug):
+    # posts_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+    posts_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')[:5]
+    post = get_object_or_404(Post, slug=slug)
     context = {
         'post': post,
-        'posts': posts_list,
+        'post_list': posts_list,
     }
     return render(request, 'blog/post_detail.html', context)
 
@@ -55,8 +56,9 @@ def post_new(request):
         form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
 
-def post_edit(request, pk):
-    post = get_object_or_404(Post, pk=pk)
+def post_edit(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    posts_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')[:5]
     if request.method == "POST":
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
@@ -64,7 +66,11 @@ def post_edit(request, pk):
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
-            return redirect('post_detail', pk=post.pk)
+            return redirect('post_detail', slug=post.slug)
     else:
         form = PostForm(instance=post)
-    return render(request, 'blog/post_edit.html', {'form': form})
+    context = {
+        'post_list': posts_list,
+        'form': form,
+        }
+    return render(request, 'blog/post_edit.html', context)
