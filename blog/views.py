@@ -54,7 +54,10 @@ def post_new(request):
     else:
         # message.error(request, "error not created")
         form = PostForm()
-    return render(request, 'blog/post_edit.html', {'form': form})
+    context = {
+        'form': form
+        }
+    return render(request, 'blog/post_edit.html', context)
 
 def post_edit(request, slug):
     post = get_object_or_404(Post, slug=slug)
@@ -71,6 +74,6 @@ def post_edit(request, slug):
         form = PostForm(instance=post)
     context = {
         'post_list': posts_list,
-        'form': form,
+        'form': form
         }
     return render(request, 'blog/post_edit.html', context)
